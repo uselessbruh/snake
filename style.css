@@ -1,0 +1,175 @@
+:root {
+    --bg-color: #2b2b2b;
+    --canvas-bg: #1a1a1a;
+    --grid-line: #333;
+    --text-color: #ffffff;
+    --accent-color: #4CAF50;
+    --btn-bg: rgba(255, 255, 255, 0.15);
+    --btn-active: rgba(76, 175, 80, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Fredoka One', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Changed to min-height for scrolling if needed */
+    overflow: hidden;
+    /* Prevent body scroll */
+    user-select: none;
+    touch-action: none;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 10px;
+    max-height: 100vh;
+}
+
+.header {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+.score-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 15px;
+    border-radius: 12px;
+    font-size: clamp(14px, 4vw, 20px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.canvas-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 4px solid #444;
+    /* Ensure canvas doesn't get too tall on small screens with buttons */
+    max-height: 65vh;
+}
+
+canvas {
+    background-color: var(--canvas-bg);
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- MOBILE CONTROLS (D-PAD) --- */
+.mobile-controls {
+    display: none;
+    /* Hidden on desktop */
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.control-row {
+    display: flex;
+    gap: 20px;
+}
+
+.d-btn {
+    width: 60px;
+    height: 60px;
+    background-color: var(--btn-bg);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.1s, transform 0.1s;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.d-btn:active {
+    background-color: var(--btn-active);
+    transform: translateY(4px);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Media Query: Show controls on screens narrower than 800px */
+@media (max-width: 800px) {
+    .mobile-controls {
+        display: flex;
+    }
+}
+
+/* Overlays */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+    transition: opacity 0.3s;
+    padding: 20px;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+h1 {
+    font-size: clamp(30px, 8vw, 50px);
+    margin-bottom: 10px;
+    color: var(--accent-color);
+    text-shadow: 2px 2px 0 #000;
+}
+
+p {
+    font-size: clamp(14px, 4vw, 18px);
+    margin-bottom: 25px;
+    color: #ddd;
+}
+
+.play-btn {
+    background: linear-gradient(180deg, #4CAF50, #388E3C);
+    border: none;
+    padding: 12px 40px;
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(18px, 5vw, 22px);
+    cursor: pointer;
+    border-radius: 50px;
+    box-shadow: 0 6px 0 #2E7D32;
+}
+
+.play-btn:active {
+    transform: translateY(6px);
+    box-shadow: 0 0 0 #2E7D32;
+}

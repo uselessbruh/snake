@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Snake with Controls</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="game-container">
+        <div class="header">
+            <div class="score-box">Score: <span id="score">0</span></div>
+            <div class="score-box">Best: <span id="highScore">0</span></div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="gameCanvas" width="600" height="600"></canvas>
+
+            <div id="gameOverScreen" class="overlay hidden">
+                <h1>GAME OVER</h1>
+                <p>You scored <span id="finalScore">0</span></p>
+                <button class="play-btn" onclick="resetGame()">Try Again</button>
+            </div>
+
+            <div id="startScreen" class="overlay">
+                <h1>SNAKE</h1>
+                <p>Use Buttons, Swipe, or Keys</p>
+                <button class="play-btn" onclick="startGame()">Play</button>
+            </div>
+        </div>
+
+        <div class="mobile-controls">
+            <div class="d-btn" id="btnUp">▲</div>
+            <div class="control-row">
+                <div class="d-btn" id="btnLeft">◀</div>
+                <div class="d-btn" id="btnDown">▼</div>
+                <div class="d-btn" id="btnRight">▶</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
